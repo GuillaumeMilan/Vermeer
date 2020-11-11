@@ -21,15 +21,16 @@ class Gallery extends Component {
       return <div>Loading</div>
     return (
       <div>
-        {
-          this.state.images_url.map(function ({item}, k) {
-            return (
-              <div key={k}>
-                <img src={item.srcUrl}/>
-              </div>
+        <h1> Your Galery </h1>
+        <header>
+          {
+            this.state.images_url.map(({item}, k) => <div key={k}>
+              {/*<div style={self.imageStyle(item.srcUrl)}></div>*/}
+              <img src={item.srcUrl} onClick={() => this.props.changePage("color-study", {item: item})}/>
+            </div>
             )
-          })
-        }
+          }
+        </header>
       </div>
     );
   }
