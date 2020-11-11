@@ -5,15 +5,24 @@ class Gallery extends Component {
     super();
 
     this.state = {
+      images_url: undefined
     };
   }
 
+  componentDidMount() {
+    const self = this
+    chrome.storage.local.get(['images_url'], function(result) {
+      self.setState(result)
+    })
+  }
+
   render() {
-    const bg = chrome.extension.getBackgroundPage()
+    if(!this.state.images_url)
+      return <div>Loading</div>
     return (
       <div>
         {
-          bg.images_url.map(function ({item}, k) {
+          this.state.images_url.map(function ({item}, k) {
             return (
               <div key={k}>
                 <img src={item.srcUrl}/>
