@@ -16,7 +16,7 @@ chrome.contextMenus.onClicked.addListener(function(item, tab) {
 });
 
 chrome.browserAction.onClicked.addListener(function (tab) {
-  chrome.tabs.create({url: 'debugger.html'})
+  chrome.tabs.create({url: './react/index.html'})
 })
 
 //subscribe on request from content.js:
